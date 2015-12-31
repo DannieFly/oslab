@@ -23,6 +23,7 @@
 #define _S(nr) (1<<((nr)-1))
 #define _BLOCKABLE (~(_S(SIGKILL) | _S(SIGSTOP)))
 
+
 void show_task(int nr,struct task_struct * p)
 {
 	int i,j = 4096-sizeof(struct task_struct);
@@ -116,8 +117,11 @@ void schedule(void)
 				}
 			if (((*p)->signal & ~(_BLOCKABLE & (*p)->blocked)) &&
 			(*p)->state==TASK_INTERRUPTIBLE)
-				(*p)->state=TASK_RUNNING;
-		}
+            {				
+                (*p)->state=TASK_RUNNING;
+                fprintk(3, "%ld\t%c\t%ld\n", (*p)->pid, 'J', jiffies);  /*添加进程就绪输出语句,输出到process.log文件中*/
+            }
+        }
 
 /* this is the scheduler proper: */
 
@@ -138,13 +142,25 @@ void schedule(void)
 				(*p)->counter = ((*p)->counter >> 1) +
 						(*p)->priority;
 	}
-	switch_to(next);
+    if(current->state == TASK_RUNNING && current != task[next])
+    {
+	    fprintk(3,"%ld\t%c\t%ld\n",current->pid,'J',jiffies);    /*添加进程就绪输出语句,输出到process.log文件中*/
+    }
+	if(current != task[next])
+    {
+	    fprintk(3,"%ld\t%c\t%ld\n",task[next]->pid,'R',jiffies);    /*添加进程运行输出语句,输出到process.log文件中*/
+    }
+    switch_to(next);
 }
 
 int sys_pause(void)
 {
 	current->state = TASK_INTERRUPTIBLE;
-	schedule();
+    if(current->pid != 0)
+	{     
+        fprintk(3,"%ld\t%c\t%ld\n",current->pid,'W',jiffies);        /*添加进程阻塞态输出语句,输出到process.log文件中*/
+    }
+    schedule();
 	return 0;
 }
 
@@ -157,13 +173,43 @@ void sleep_on(struct task_struct **p)
 	if (current == &(init_task.task))
 		panic("task[0] trying to sleep");
 	tmp = *p;
-	*p = current;
-	current->state = TASK_UNINTERRUPTIBLE;
-	schedule();
-	if (tmp)
-		tmp->state=0;
+	*p = current;  //仔细阅读，实际上是将current插入“等待队列”头部，tmp是原来的头部
+	current->state = TASK_UNINTERRUPTIBLE;  //切换到睡眠态
+    
+    fprintk(3, "%ld\t%c\t%ld\n", current->pid, 'W', jiffies); //添加进程阻塞态输出语句,输出到process.log文件中
+	
+    schedule();    //让出CPU
+	if (tmp){
+        tmp->state=0;//唤醒队列中的上一个（tmp）睡眠进程。0换作TASK_RUNNING更好
+				//在记录进程被唤醒时一定要考虑到这种情况，实验者一定要注意!!!
+        fprintk(3,"%ld\t%c\t%ld\n",tmp->pid,'J',jiffies);       /*添加进程就绪输出语句,输出到process.log文件中*/
+    }
 }
 
+/* TASK_UNINTERRUPTIBLE和TASK_INTERRUPTIBLE的区别在于不可中断的睡眠
+ * 只能由wake_up()显式唤醒，再由上面的 schedule()语句后的
+ *
+ *   if (tmp) tmp->state=0;
+ *
+ * 依次唤醒，所以不可中断的睡眠进程一定是按严格从“队列”（一个依靠
+ * 放在进程内核栈中的指针变量tmp维护的队列）的首部进行唤醒。而对于可
+ * 中断的进程，除了用wake_up唤醒以外，也可以用信号（给进程发送一个信
+ * 号，实际上就是将进程PCB中维护的一个向量的某一位置位，进程需要在合
+ * 适的时候处理这一位。感兴趣的实验者可以阅读有关代码）来唤醒，如在
+ * schedule()中：
+ *
+ *  for(p = &LAST_TASK ; p > &FIRST_TASK ; --p)
+ *  	if (((*p)->signal & ~(_BLOCKABLE & (*p)->blocked)) &&
+ * 	    (*p)->state==TASK_INTERRUPTIBLE)
+ * 		(*p)->state=TASK_RUNNING;//唤醒
+ *
+ * 就是当进程是可中断睡眠时，如果遇到一些信号就将其唤醒。这样的唤醒会
+ * 出现一个问题，那就是可能会唤醒等待队列中间的某个进程，此时这个链就
+ * 需要进行适当调整。interruptible_sleep_on和sleep_on函数的主要区别就
+ * 在这里。
+ */
+ 
+ 
 void interruptible_sleep_on(struct task_struct **p)
 {
 	struct task_struct *tmp;
@@ -174,21 +220,30 @@ void interruptible_sleep_on(struct task_struct **p)
 		panic("task[0] trying to sleep");
 	tmp=*p;
 	*p=current;
-repeat:	current->state = TASK_INTERRUPTIBLE;
+    repeat:	current->state = TASK_INTERRUPTIBLE;
+    
+    fprintk(3, "%ld\t%c\t%ld\n", current->pid, 'W', jiffies);    /*添加进程阻塞态输出语句,输出到process.log文件中*/
+    
 	schedule();
-	if (*p && *p != current) {
-		(**p).state=0;
+	if (*p && *p != current) //如果队列头进程和刚唤醒的进程current不是一个，说明从队列中间唤醒了一个进程，需要处理
+    {	
+        (**p).state=0;
+        fprintk(3, "%ld\t%c\t%ld\n", (**p).pid, 'J', jiffies);       /*添加进程就绪输出语句,输出到process.log文件中*/
 		goto repeat;
 	}
 	*p=NULL;
 	if (tmp)
+    {
 		tmp->state=0;
+        fprintk(3, "%ld\t%c\t%ld\n", tmp->pid, 'J', jiffies);       /*添加进程就绪输出语句,输出到process.log文件中*/
+    }
 }
 
 void wake_up(struct task_struct **p)
 {
 	if (p && *p) {
 		(**p).state=0;
+        fprintk(3,"%ld\t%c\t%ld\n",(**p).pid,'J',jiffies);       /*添加进程就绪输出语句,输出到process.log文件中*/ 
 		*p=NULL;
 	}
 }

@@ -75,7 +75,7 @@ int copy_process(int nr,long ebp,long edi,long esi,long gs,long none,
 	int i;
 	struct file *f;
 
-	p = (struct task_struct *) get_free_page();
+	p = (struct task_struct *) get_free_page(); //获得一个task_struct结构体空间
 	if (!p)
 		return -EAGAIN;
 	task[nr] = p;
@@ -89,8 +89,11 @@ int copy_process(int nr,long ebp,long edi,long esi,long gs,long none,
 	p->leader = 0;		/* process leadership doesn't inherit */
 	p->utime = p->stime = 0;
 	p->cutime = p->cstime = 0;
-	p->start_time = jiffies;
-	p->tss.back_link = 0;
+	p->start_time = jiffies;   //设置start_time为jiffies
+    
+    fprintk(3, "%ld\t%c\t%ld\n", last_pid, 'N', jiffies);   //向process.log写入进程新建态(N)。
+	
+    p->tss.back_link = 0;
 	p->tss.esp0 = PAGE_SIZE + (long) p;
 	p->tss.ss0 = 0x10;
 	p->tss.eip = eip;
@@ -130,7 +133,13 @@ int copy_process(int nr,long ebp,long edi,long esi,long gs,long none,
 	set_tss_desc(gdt+(nr<<1)+FIRST_TSS_ENTRY,&(p->tss));
 	set_ldt_desc(gdt+(nr<<1)+FIRST_LDT_ENTRY,&(p->ldt));
 	p->state = TASK_RUNNING;	/* do this last, just in case */
-	return last_pid;
+                    //设置进程状态为就绪。所有就绪进程的状态都是
+					//TASK_RUNNING(0），被全局变量current指向的
+					//是正在运行的进程。
+    
+    fprintk(3,"%ld\t%c\t%ld\n",last_pid,'J',jiffies);   //向process.log写入就绪态(J)。
+    
+    return last_pid;
 }
 
 int find_empty_process(void)

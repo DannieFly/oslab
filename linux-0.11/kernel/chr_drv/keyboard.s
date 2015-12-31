@@ -1,5 +1,5 @@
 # 1 "keyboard.S"
-# 1 "/home/zhiming/\344\270\213\350\275\275/\346\223\215\344\275\234\347\263\273\347\273\237/oslab/linux-0.11/kernel/chr_drv//"
+# 1 "/home/zhiming/oslab/oslab-3/linux-0.11/kernel/chr_drv//"
 # 1 "<built-in>"
 # 1 "<command line>"
 # 1 "keyboard.S"

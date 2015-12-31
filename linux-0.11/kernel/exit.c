@@ -127,6 +127,9 @@ int do_exit(long code)
 	if (current->leader)
 		kill_session();
 	current->state = TASK_ZOMBIE;
+    
+    //fprintk(3,"%ld\t%c\t%ld\n",current->pid,'E',jiffies);    /*添加进程退出输出语句,输出到process.log文件中*/
+
 	current->exit_code = code;
 	tell_father(current->father);
 	schedule();
@@ -172,6 +175,9 @@ repeat:
 				current->cstime += (*p)->stime;
 				flag = (*p)->pid;
 				code = (*p)->exit_code;
+                
+                fprintk(3, "%ld\t%c\t%ld\n", flag, 'E', jiffies);
+                
 				release(*p);
 				put_fs_long(code,stat_addr);
 				return flag;
@@ -184,6 +190,10 @@ repeat:
 		if (options & WNOHANG)
 			return 0;
 		current->state=TASK_INTERRUPTIBLE;
+        if(current->pid != 0 )// 当不是进程0的时候打印
+        {    
+            fprintk(3,"%ld\t%c\t%ld\n",current->pid,'W',jiffies);    /*添加进程阻塞态输出语句,输出到process.log文件中*/
+        }
 		schedule();
 		if (!(current->signal &= ~(1<<(SIGCHLD-1))))
 			goto repeat;
