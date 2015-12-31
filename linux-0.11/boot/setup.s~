@@ -30,23 +30,19 @@ begbss:
 entry start
 start:
 
-!-----------------------------------------------------------------------
-! Print some inane message setup.s
-	
-	mov ax,#SETUPSEG  !段地址 0x9020
-	mov es,ax
-	
-	mov ah,#0x03
-	xor bh,bh
-	int 0x10   ! read cursor pos
-	
-	mov cx,#25
-	mov bx,#0x0007
-	mov bp,#msg2
-	mov ax,#0x1301
-	int 0x10
-!-----------------------------------------------------------------------
+!此处添加setup.s向屏幕输入的代码
 
+mov ah,#0x03
+xor bh,bh
+int 0x10        !先读光标位置，返回值在dx中
+
+mov ax,#SETUPSEG
+mov es,ax
+mov cx,#25
+mov bx,#0x0007
+mov bp,#msg2
+mov ax,#0x1301
+int 0x10
 
 ! ok, the read went well so we get current cursor position and save it for
 ! posterity.
@@ -113,14 +109,14 @@ start:
 	je	is_disk1
 no_disk1:
 	mov	ax,#INITSEG
-	mov	es,ax			
-	mov	di,#0x0090		
+	mov	es,ax
+	mov	di,#0x0090
 	mov	cx,#0x10
 	mov	ax,#0x00
 	rep
 	stosb
 is_disk1:
-    
+	     
 !以16进制方式打印机器参数
 !先打印光标位置
 print_cur:
@@ -196,12 +192,9 @@ print_hd:
   xor bh,bh
   call print_bx
   
-
-death:
-	jmp death  !死循环
-!-----------------------------------------------------------------------
-
-
+!死循环
+death:jmp death 
+  
 ! now we want to move to protected mode ...
 
 	cli			! no interrupts allowed !

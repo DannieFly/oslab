@@ -1,0 +1,271 @@
+00000000000i[     ] Bochs x86 Emulator 2.3.7
+00000000000i[     ]   Build from CVS snapshot, on June 3, 2008
+00000000000i[     ] System configuration
+00000000000i[     ]   processors: 1 (cores=1, HT threads=1)
+00000000000i[     ]   A20 line support: yes
+00000000000i[     ]   APIC support: no
+00000000000i[     ] CPU configuration
+00000000000i[     ]   level: 5
+00000000000i[     ]   SMP support: no
+00000000000i[     ]   FPU support: yes
+00000000000i[     ]   MMX support: yes
+00000000000i[     ]   SSE support: no
+00000000000i[     ]   CLFLUSH support: no
+00000000000i[     ]   VME support: yes
+00000000000i[     ]   3dnow! support: no
+00000000000i[     ]   PAE support: no
+00000000000i[     ]   PGE support: no
+00000000000i[     ]   PSE support: yes
+00000000000i[     ]   x86-64 support: no
+00000000000i[     ]   SEP support: no
+00000000000i[     ]   MWAIT support: no
+00000000000i[     ]   XSAVE support: no
+00000000000i[     ]   AES support: no
+00000000000i[     ] Optimization configuration
+00000000000i[     ]   Guest2HostTLB support: no
+00000000000i[     ]   RepeatSpeedups support: no
+00000000000i[     ]   Icache support: no
+00000000000i[     ]   Trace cache support: no
+00000000000i[     ]   Fast function calls: no
+00000000000i[     ] Devices configuration
+00000000000i[     ]   ACPI support: no
+00000000000i[     ]   NE2000 support: no
+00000000000i[     ]   PCI support: no
+00000000000i[     ]   SB16 support: no
+00000000000i[     ]   USB support: no
+00000000000i[     ]   VGA extension support: vbe 
+00000000000i[MEM0 ] allocated memory at 0xb5e1c008. after alignment, vector=0xb5e1d000
+00000000000i[MEM0 ] 16.00MB
+00000000000i[MEM0 ] rom at 0xfffe0000/131072 ('./bochs/BIOS-bochs-latest')
+00000000000i[MEM0 ] rom at 0xc0000/39424 ('./bochs/vgabios.bin')
+00000000000i[CMOS ] Using local time for initial clock
+00000000000i[CMOS ] Setting initial clock to: Thu Dec 31 17:29:46 2015 (time0=1451554186)
+00000000000i[DMA  ] channel 4 used by cascade
+00000000000i[DMA  ] channel 2 used by Floppy Drive
+00000000000i[FDD  ] fd0: './linux-0.11/Image' ro=0, h=2,t=80,spt=18
+00000000000i[MEM0 ] Register memory access handlers: 0x000a0000 - 0x000bffff
+00000000000i[XGUI ] test_alloc_colors: 16 colors available out of 16 colors tried
+00000000000i[XGUI ] font 8 wide x 16 high, display depth = 24
+00000000000i[VGA  ] interval=300000
+00000000000i[MEM0 ] Register memory access handlers: 0xe0000000 - 0xe07fffff
+00000000000i[VGA  ] VBE Bochs Display Extension Enabled
+00000000000i[     ] init_mem of 'harddrv' plugin device by virtual method
+00000000000i[     ] init_mem of 'keyboard' plugin device by virtual method
+00000000000i[     ] init_mem of 'serial' plugin device by virtual method
+00000000000i[     ] init_mem of 'parallel' plugin device by virtual method
+00000000000i[     ] init_mem of 'extfpuirq' plugin device by virtual method
+00000000000i[     ] init_mem of 'speaker' plugin device by virtual method
+00000000000i[     ] init_dev of 'harddrv' plugin device by virtual method
+00000000000i[HD   ] HD on ata0-0: './hdc-0.11.img' 'flat' mode 
+00000000000i[HD   ] translation on ata0-0 set to 'none'
+00000000000i[HD   ] Using boot sequence floppy, none, none
+00000000000i[HD   ] Floppy boot signature check is enabled
+00000000000i[     ] init_dev of 'keyboard' plugin device by virtual method
+00000000000i[KBD  ] will paste characters every 1000 keyboard ticks
+00000000000i[     ] init_dev of 'serial' plugin device by virtual method
+00000000000i[SER  ] com1 at 0x03f8 irq 4
+00000000000i[     ] init_dev of 'parallel' plugin device by virtual method
+00000000000i[PAR  ] parallel port 1 at 0x0378 irq 7
+00000000000i[     ] init_dev of 'extfpuirq' plugin device by virtual method
+00000000000i[     ] init_dev of 'speaker' plugin device by virtual method
+00000000000i[SPEAK] Failed to open /dev/console: 资源暂时不可用
+00000000000i[SPEAK] Deactivating beep on console
+00000000000i[     ] register state of 'harddrv' plugin device by virtual method
+00000000000i[     ] register state of 'keyboard' plugin device by virtual method
+00000000000i[     ] register state of 'serial' plugin device by virtual method
+00000000000i[     ] register state of 'parallel' plugin device by virtual method
+00000000000i[     ] register state of 'extfpuirq' plugin device by virtual method
+00000000000i[     ] register state of 'speaker' plugin device by virtual method
+00000000000i[SYS  ] bx_pc_system_c::Reset(HARDWARE) called
+00000000000i[CPU  ] cpu hardware reset
+00000000000i[     ] reset of 'harddrv' plugin device by virtual method
+00000000000i[     ] reset of 'keyboard' plugin device by virtual method
+00000000000i[     ] reset of 'serial' plugin device by virtual method
+00000000000i[     ] reset of 'parallel' plugin device by virtual method
+00000000000i[     ] reset of 'extfpuirq' plugin device by virtual method
+00000000000i[     ] reset of 'speaker' plugin device by virtual method
+00000000000i[XGUI ] [x] Mouse off
+00000003445i[BIOS ] $Revision: 1.194 $ $Date: 2007/12/23 19:46:27 $
+00000317668i[KBD  ] reset-disable command received
+00000336412i[BIOS ] Starting rombios32
+00000337108i[BIOS ] ram_size=0x00f00000
+00000337622i[BIOS ] Found 1 cpu(s)
+00000562120i[VBIOS] VGABios $Id: vgabios.c,v 1.66 2006/07/10 07:47:51 vruppert Exp $
+00000562191i[VGA  ] VBE known Display Interface b0c0
+00000562223i[VGA  ] VBE known Display Interface b0c4
+00000565148i[VBIOS] VBE Bios $Id: vbe.c,v 1.58 2006/08/19 09:39:43 vruppert Exp $
+00000888612i[BIOS ] ata0-0: PCHS=204/16/38 translation=none LCHS=204/16/38
+00001200000i[XGUI ] charmap update. Font Height is 16
+00004768797i[BIOS ] IDE time out
+00004967660i[BIOS ] Booting from 0000:7c00
+00015841494i[FDD  ] partial read() on floppy image returns 164/512
+00015886449i[FDD  ] read() on floppy image returns 0
+00015931404i[FDD  ] read() on floppy image returns 0
+00015976359i[FDD  ] read() on floppy image returns 0
+00016021314i[FDD  ] read() on floppy image returns 0
+00016066269i[FDD  ] read() on floppy image returns 0
+00016111224i[FDD  ] read() on floppy image returns 0
+00016156179i[FDD  ] read() on floppy image returns 0
+00016201134i[FDD  ] read() on floppy image returns 0
+00016246089i[FDD  ] read() on floppy image returns 0
+00016292289i[FDD  ] read() on floppy image returns 0
+00016337244i[FDD  ] read() on floppy image returns 0
+00016382199i[FDD  ] read() on floppy image returns 0
+00016427154i[FDD  ] read() on floppy image returns 0
+00016472109i[FDD  ] read() on floppy image returns 0
+00016517064i[FDD  ] read() on floppy image returns 0
+00016562019i[FDD  ] read() on floppy image returns 0
+00016606974i[FDD  ] read() on floppy image returns 0
+00016651929i[FDD  ] read() on floppy image returns 0
+00016698136i[FDD  ] read() on floppy image returns 0
+00016743091i[FDD  ] read() on floppy image returns 0
+00016788046i[FDD  ] read() on floppy image returns 0
+00016833001i[FDD  ] read() on floppy image returns 0
+00016877956i[FDD  ] read() on floppy image returns 0
+00016922911i[FDD  ] read() on floppy image returns 0
+00016967866i[FDD  ] read() on floppy image returns 0
+00017012821i[FDD  ] read() on floppy image returns 0
+00017057776i[FDD  ] read() on floppy image returns 0
+00017103964i[FDD  ] read() on floppy image returns 0
+00017148919i[FDD  ] read() on floppy image returns 0
+00017193874i[FDD  ] read() on floppy image returns 0
+00017238829i[FDD  ] read() on floppy image returns 0
+00017283784i[FDD  ] read() on floppy image returns 0
+00017328739i[FDD  ] read() on floppy image returns 0
+00017373694i[FDD  ] read() on floppy image returns 0
+00017418649i[FDD  ] read() on floppy image returns 0
+00017463604i[FDD  ] read() on floppy image returns 0
+00017508559i[FDD  ] read() on floppy image returns 0
+00017553514i[FDD  ] read() on floppy image returns 0
+00017598469i[FDD  ] read() on floppy image returns 0
+00017643424i[FDD  ] read() on floppy image returns 0
+00017688379i[FDD  ] read() on floppy image returns 0
+00017733334i[FDD  ] read() on floppy image returns 0
+00017778289i[FDD  ] read() on floppy image returns 0
+00017823244i[FDD  ] read() on floppy image returns 0
+00017868199i[FDD  ] read() on floppy image returns 0
+00017914395i[FDD  ] read() on floppy image returns 0
+00017959350i[FDD  ] read() on floppy image returns 0
+00018004305i[FDD  ] read() on floppy image returns 0
+00018049260i[FDD  ] read() on floppy image returns 0
+00018094215i[FDD  ] read() on floppy image returns 0
+00018139170i[FDD  ] read() on floppy image returns 0
+00018184125i[FDD  ] read() on floppy image returns 0
+00018229080i[FDD  ] read() on floppy image returns 0
+00018274035i[FDD  ] read() on floppy image returns 0
+00018318990i[FDD  ] read() on floppy image returns 0
+00018363945i[FDD  ] read() on floppy image returns 0
+00018408900i[FDD  ] read() on floppy image returns 0
+00018453855i[FDD  ] read() on floppy image returns 0
+00018498810i[FDD  ] read() on floppy image returns 0
+00018543765i[FDD  ] read() on floppy image returns 0
+00018588720i[FDD  ] read() on floppy image returns 0
+00018633675i[FDD  ] read() on floppy image returns 0
+00018678630i[FDD  ] read() on floppy image returns 0
+00018724825i[FDD  ] read() on floppy image returns 0
+00018769780i[FDD  ] read() on floppy image returns 0
+00018814735i[FDD  ] read() on floppy image returns 0
+00018859690i[FDD  ] read() on floppy image returns 0
+00018904645i[FDD  ] read() on floppy image returns 0
+00018949600i[FDD  ] read() on floppy image returns 0
+00018994555i[FDD  ] read() on floppy image returns 0
+00019039510i[FDD  ] read() on floppy image returns 0
+00019084465i[FDD  ] read() on floppy image returns 0
+00019129420i[FDD  ] read() on floppy image returns 0
+00019174375i[FDD  ] read() on floppy image returns 0
+00019219330i[FDD  ] read() on floppy image returns 0
+00019264285i[FDD  ] read() on floppy image returns 0
+00019309240i[FDD  ] read() on floppy image returns 0
+00019354195i[FDD  ] read() on floppy image returns 0
+00019399150i[FDD  ] read() on floppy image returns 0
+00019444105i[FDD  ] read() on floppy image returns 0
+00019489060i[FDD  ] read() on floppy image returns 0
+00019535275i[FDD  ] read() on floppy image returns 0
+00019580230i[FDD  ] read() on floppy image returns 0
+00019625185i[FDD  ] read() on floppy image returns 0
+00019670140i[FDD  ] read() on floppy image returns 0
+00019715095i[FDD  ] read() on floppy image returns 0
+00019760050i[FDD  ] read() on floppy image returns 0
+00019805005i[FDD  ] read() on floppy image returns 0
+00019849960i[FDD  ] read() on floppy image returns 0
+00019894915i[FDD  ] read() on floppy image returns 0
+00019939870i[FDD  ] read() on floppy image returns 0
+00019984825i[FDD  ] read() on floppy image returns 0
+00020029780i[FDD  ] read() on floppy image returns 0
+00020074735i[FDD  ] read() on floppy image returns 0
+00020119690i[FDD  ] read() on floppy image returns 0
+00020164645i[FDD  ] read() on floppy image returns 0
+00020209600i[FDD  ] read() on floppy image returns 0
+00020254555i[FDD  ] read() on floppy image returns 0
+00020299510i[FDD  ] read() on floppy image returns 0
+00020345705i[FDD  ] read() on floppy image returns 0
+00020390660i[FDD  ] read() on floppy image returns 0
+00020435615i[FDD  ] read() on floppy image returns 0
+00020480570i[FDD  ] read() on floppy image returns 0
+00020525525i[FDD  ] read() on floppy image returns 0
+00020570480i[FDD  ] read() on floppy image returns 0
+00020615435i[FDD  ] read() on floppy image returns 0
+00020660390i[FDD  ] read() on floppy image returns 0
+00020705345i[FDD  ] read() on floppy image returns 0
+00020750300i[FDD  ] read() on floppy image returns 0
+00020795255i[FDD  ] read() on floppy image returns 0
+00020840210i[FDD  ] read() on floppy image returns 0
+00020885165i[FDD  ] read() on floppy image returns 0
+00020930120i[FDD  ] read() on floppy image returns 0
+00020975075i[FDD  ] read() on floppy image returns 0
+00021020030i[FDD  ] read() on floppy image returns 0
+00021064985i[FDD  ] read() on floppy image returns 0
+00021109940i[FDD  ] read() on floppy image returns 0
+00021156136i[FDD  ] read() on floppy image returns 0
+00021201091i[FDD  ] read() on floppy image returns 0
+00021246046i[FDD  ] read() on floppy image returns 0
+00021291001i[FDD  ] read() on floppy image returns 0
+00021335956i[FDD  ] read() on floppy image returns 0
+00021380911i[FDD  ] read() on floppy image returns 0
+00021425866i[FDD  ] read() on floppy image returns 0
+00021470821i[FDD  ] read() on floppy image returns 0
+00021515776i[FDD  ] read() on floppy image returns 0
+00021560731i[FDD  ] read() on floppy image returns 0
+00021605686i[FDD  ] read() on floppy image returns 0
+00021650641i[FDD  ] read() on floppy image returns 0
+00021695596i[FDD  ] read() on floppy image returns 0
+00021740551i[FDD  ] read() on floppy image returns 0
+00021785506i[FDD  ] read() on floppy image returns 0
+00021830461i[FDD  ] read() on floppy image returns 0
+00021875416i[FDD  ] read() on floppy image returns 0
+00021920371i[FDD  ] read() on floppy image returns 0
+00021966589i[FDD  ] read() on floppy image returns 0
+00022011544i[FDD  ] read() on floppy image returns 0
+00022056499i[FDD  ] read() on floppy image returns 0
+00022101454i[FDD  ] read() on floppy image returns 0
+00022146409i[FDD  ] read() on floppy image returns 0
+00022191364i[FDD  ] read() on floppy image returns 0
+00022236319i[FDD  ] read() on floppy image returns 0
+00022281274i[FDD  ] read() on floppy image returns 0
+00022326229i[FDD  ] read() on floppy image returns 0
+00022371184i[FDD  ] read() on floppy image returns 0
+00022416139i[FDD  ] read() on floppy image returns 0
+00022484035i[BIOS ] int13_harddisk: function 15, unmapped device for ELDL=81
+00061200000i[     ] cpu loop quit, shutting down simulator
+00061200000i[CPU  ] CPU is in real mode (active)
+00061200000i[CPU  ] CS.d_b = 16 bit
+00061200000i[CPU  ] SS.d_b = 16 bit
+00061200000i[CPU  ] | EAX=00000e0a  EBX=00000026  ECX=00000000  EDX=00000026
+00061200000i[CPU  ] | ESP=0000ff00  EBP=00000260  ESI=ffff005d  EDI=0008008e
+00061200000i[CPU  ] | IOPL=0 id vip vif ac vm rf nt of df if tf SF zf AF PF CF
+00061200000i[CPU  ] | SEG selector     base    limit G D
+00061200000i[CPU  ] | SEG sltr(index|ti|rpl)     base    limit G D
+00061200000i[CPU  ] |  CS:9020( 0004| 0|  0) 00090200 0000ffff 0 0
+00061200000i[CPU  ] |  DS:9000( 0005| 0|  0) 00090000 0000ffff 0 0
+00061200000i[CPU  ] |  SS:9000( 0005| 0|  0) 00090000 0000ffff 0 0
+00061200000i[CPU  ] |  ES:9020( 0005| 0|  0) 00090200 0000ffff 0 0
+00061200000i[CPU  ] |  FS:0000( 0005| 0|  0) 00000000 0000ffff 0 0
+00061200000i[CPU  ] |  GS:0000( 0005| 0|  0) 00000000 0000ffff 0 0
+00061200000i[CPU  ] | EIP=0000012e (0000012e)
+00061200000i[CPU  ] | CR0=0x60000010 CR1=0 CR2=0x00000000
+00061200000i[CPU  ] | CR3=0x00000000 CR4=0x00000000
+00061200000i[CPU  ] >> jmp .+0xfffe (0x0009032e) : EBFE
+00061200000i[CMOS ] Last time is 1451554201 (Thu Dec 31 17:30:01 2015)
+00061200000i[XGUI ] Exit
+00061200000i[     ] restoring default signal behavior
+00061200000i[CTRL ] quit_sim called with exit code 1
