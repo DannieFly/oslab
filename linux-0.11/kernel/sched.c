@@ -135,8 +135,10 @@ void schedule(void)
 				continue;
 			if ((*p)->state == TASK_RUNNING && (*p)->counter > c)
 				c = (*p)->counter, next = i;
-		}
-		if (c) break;
+		} /*找到counter值最大的就绪态进程*/
+		if (c) break;	/*如果有counter值大于0的就绪态进程，则退出*/
+
+		/*如果没有，所有进程的counter值除以2衰减后再和priority值相加，产生新的时间片*/
 		for(p = &LAST_TASK ; p > &FIRST_TASK ; --p)
 			if (*p)
 				(*p)->counter = ((*p)->counter >> 1) +
