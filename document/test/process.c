@@ -11,7 +11,6 @@ int main(int argc, char * argv[])
 {
     pid_t pid;
     int i = 0;
-
     for(i = 0; i < 3; i++)
     {
 		/*创建子进程*/
@@ -19,16 +18,13 @@ int main(int argc, char * argv[])
 	
 		/*子进程创建失败*/
         if(pid < 0)	
-        {
             printf("error in fork!");
-        }
 		
 		/*若该进程是子进程*/
         else if(pid == 0) 
         {	
 			/*打印子进程ID*/
-            printf("Child process ID is %d\n", getpid()); 
-			
+            printf("Child process ID is %d\n", getpid());
 			/*调用cpuio_bound*/            
 			cpuio_bound(10, i + 2, 8 - i);
             return;
