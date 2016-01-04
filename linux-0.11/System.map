@@ -488,8 +488,8 @@
 0001fe10 b bottom
 0001fe14 b npar
 0001fe20 b par
-0001fe60 B drive_info
-0001fe80 B judge
+0001fe60 B show_key
+0001fe80 B drive_info
 0001fea0 B user_stack
 00020ea0 B hash_table
 00021380 B super_block

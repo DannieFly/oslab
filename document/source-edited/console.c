@@ -451,10 +451,15 @@ void con_write(struct tty_struct * tty)
 	while (nr--) {
 		GETCH(tty->write_q,c);
 		
-		if(judge){
-            if((c>='a'&&c<='z')||(c>='A'&&c<='Z')||(c>='0'&&c<='9'))
-                c=42;
-            }
+		/* show_key 为全局变量，控制是否需要正常显示 */
+		/* 对于字母和数字字符，在console显示，强行修改位‘*’ */
+		if(show_key == 1)
+		{
+            if((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || (c >= '0' && c <= '9'))
+            {
+				c = '*';
+			}
+		}
 
 		switch(state) {
 			case 0:

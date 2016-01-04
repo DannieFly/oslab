@@ -1,4 +1,4 @@
-int judge;  
+int show_key;
 
 #define move_to_user_mode() \
 __asm__ ("movl %%esp,%%eax\n\t" \
