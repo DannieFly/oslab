@@ -6,3 +6,4 @@
 3. branch: oslab-2 --> 实验2：系统调用
 4. branch: oslab-3 --> 实验3：进程运行轨迹的跟踪与统计
 5. branch: oslab-6 --> 实验6：地址映射与共享
+6. branch: oslab-7 --> 实验7：字符显示的控制
