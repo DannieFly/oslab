@@ -1,5 +1,5 @@
 # 1 "keyboard.S"
-# 1 "/home/zhiming/\344\270\213\350\275\275/\346\223\215\344\275\234\347\263\273\347\273\237/oslab/linux-0.11/kernel/chr_drv//"
+# 1 "/home/zhiming/oslab/linux-0.11/kernel/chr_drv//"
 # 1 "<built-in>"
 # 1 "<command line>"
 # 1 "keyboard.S"
@@ -242,7 +242,7 @@ func:
 	pushl %eax
 	pushl %ecx
 	pushl %edx
-	call show_stat
+	
 	popl %edx
 	popl %ecx
 	popl %eax
